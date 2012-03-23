@@ -1,0 +1,51 @@
+name: J2MC_AdminToolkit
+main: to.joe.j2mc.admintoolkit.J2MC_AdminToolkit
+version: 1.0
+website: http://forums.joe.to
+author: J2 Minecraft Plugin Team
+description: Admin toolkit module.
+commands:
+  getgroup:
+    description: fetches the user's group
+    usage: |
+            /getgroup player
+  hat:
+    description: adds item in hand to helmet slot
+    usage: |
+            /hat
+  whereis:
+     description: gets the coordinates of a player
+     usage: |
+             /whereis player
+  a:
+    description: chat privately \o/
+    usage: |
+            /a message
+  g:
+    description: Big brother wishes to talk to you
+    usage: |
+            /g message
+  time:
+    description: change time
+    usage: |
+            /time <day/night>
+  mob:
+    description: spawns mob
+    usage: |
+            /mob name
+  coo:
+    description: teleport to coords
+    usage: |
+            /coo x y z
+  getflags:
+    description: get a player's flags
+    usage: |
+            /getflags player
+  storm:
+    description: start and stop storms
+    usage: |
+            /storm start/stop
+permissions:
+  j2mc.admintoolkit.admin:
+    description: Admin
+
