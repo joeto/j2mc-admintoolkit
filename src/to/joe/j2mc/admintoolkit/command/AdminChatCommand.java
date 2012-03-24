@@ -19,7 +19,7 @@ public class AdminChatCommand extends MasterCommand {
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
         if (sender.hasPermission(J2MC_AdminToolkit.adminPerm)) {
             if (args.length < 1) {
-                sender.sendMessage(ChatColor.RED + "Usage: /a Message");
+                sender.sendMessage(ChatColor.RED + "Usage: /a message");
                 return;
             }
             String message = J2MC_Core.combineSplit(0, args, " ");

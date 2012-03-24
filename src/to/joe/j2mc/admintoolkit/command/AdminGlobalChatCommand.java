@@ -1,7 +1,5 @@
 package to.joe.j2mc.admintoolkit.command;
 
-import java.util.HashSet;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -26,16 +24,11 @@ public class AdminGlobalChatCommand extends MasterCommand {
                 return;
             }
             final String message = J2MC_Core.combineSplit(0, args, " ");
-            for (final Player plr : J2MC_Manager.getVisibility().getOnlinePlayers(null)) {
-                if (plr.hasPermission(J2MC_AdminToolkit.adminPerm)) {
-                    plr.sendMessage("<" + player.getName() + "> " + ChatColor.LIGHT_PURPLE + message);
-                } else {
-                    plr.sendMessage("<ADMIN> " + ChatColor.LIGHT_PURPLE + message);
-                }
-            }
-            HashSet<String> targets = new HashSet<String>();
-            targets.add("GAMEMSG");
-            plugin.getServer().getPluginManager().callEvent(new MessageEvent(targets, "<ADMIN> " + ChatColor.LIGHT_PURPLE + message));
+            final String adminMsg = "<" + sender.getName() + "> " + ChatColor.LIGHT_PURPLE + message;
+            final String publicMsg = "<ADMIN> " + ChatColor.LIGHT_PURPLE + message;
+            J2MC_Manager.getCore().adminAndLog(adminMsg);
+            J2MC_Manager.getCore().messageNonAdmin(publicMsg);
+            this.plugin.getServer().getPluginManager().callEvent(new MessageEvent(MessageEvent.compile("GAMEMSG"), "<ADMIN> " + message));
         }
     }
 

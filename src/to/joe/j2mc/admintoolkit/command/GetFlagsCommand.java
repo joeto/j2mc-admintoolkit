@@ -2,7 +2,6 @@ package to.joe.j2mc.admintoolkit.command;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -12,12 +11,12 @@ import to.joe.j2mc.admintoolkit.J2MC_AdminToolkit;
 import to.joe.j2mc.core.J2MC_Manager;
 import to.joe.j2mc.core.command.MasterCommand;
 
-public class GetFlagsCommand extends MasterCommand{
-    
-    public GetFlagsCommand(J2MC_AdminToolkit adminToolKit){
+public class GetFlagsCommand extends MasterCommand {
+
+    public GetFlagsCommand(J2MC_AdminToolkit adminToolKit) {
         super(adminToolKit);
     }
-    
+
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
         if (sender.hasPermission(J2MC_AdminToolkit.adminPerm)) {
@@ -25,16 +24,14 @@ public class GetFlagsCommand extends MasterCommand{
                 sender.sendMessage(ChatColor.RED + "/getgroup playername");
                 return;
             }
-            try{
-                PreparedStatement ps = J2MC_Manager.getMySQL().getFreshPreparedStatementHotFromTheOven("SELECT `flags` FROM users WHERE name=?");
+            try {
+                final PreparedStatement ps = J2MC_Manager.getMySQL().getFreshPreparedStatementHotFromTheOven("SELECT `flags` FROM users WHERE name=?");
                 ps.setString(1, args[0]);
-                ResultSet rs = ps.executeQuery();
-                if(rs.next()){
-                    player.sendMessage(ChatColor.RED + "User's flags: " + rs.getString("flags"));
+                final ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    sender.sendMessage(ChatColor.RED + "User's flags: " + rs.getString("flags"));
                 }
-            }catch(SQLException e){
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
+            } catch (final Exception e) {
                 e.printStackTrace();
             }
         }

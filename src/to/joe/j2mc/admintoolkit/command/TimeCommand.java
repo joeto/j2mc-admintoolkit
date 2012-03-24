@@ -16,7 +16,7 @@ public class TimeCommand extends MasterCommand {
 
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
-        if (sender.hasPermission(J2MC_AdminToolkit.adminPerm)) {
+        if (isPlayer && sender.hasPermission(J2MC_AdminToolkit.adminPerm)) {
             if (args.length == 0) {
                 sender.sendMessage(ChatColor.RED + "/time <day/night>");
                 return;

@@ -8,12 +8,12 @@ import to.joe.j2mc.admintoolkit.J2MC_AdminToolkit;
 import to.joe.j2mc.core.J2MC_Manager;
 import to.joe.j2mc.core.command.MasterCommand;
 
-public class StormCommand extends MasterCommand{
+public class StormCommand extends MasterCommand {
 
-    public StormCommand(J2MC_AdminToolkit toolkit){
+    public StormCommand(J2MC_AdminToolkit toolkit) {
         super(toolkit);
     }
-    
+
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
         if (isPlayer && player.hasPermission(J2MC_AdminToolkit.adminPerm)) {
@@ -33,5 +33,5 @@ public class StormCommand extends MasterCommand{
             }
         }
     }
-    
+
 }

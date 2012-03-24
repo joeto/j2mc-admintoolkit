@@ -34,7 +34,7 @@ public class MobCommand extends MasterCommand {
                     public void run() {
                         player.kickPlayer(ChatColor.MAGIC + "OMG OMG OMG OMG OMG");
                     }
-                });
+                }, 100);
             }
             final EntityType mob = EntityType.valueOf(args[0]);
             if (mob != null) {

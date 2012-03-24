@@ -27,8 +27,12 @@ public class CooCommand extends MasterCommand {
                 player.leaveVehicle();
                 vehicle.remove();
             }
-            player.teleport(new Location(player.getWorld(), Double.valueOf(args[0]), Double.valueOf(args[1]), Double.valueOf(args[2]), 0, 0));
-            player.sendMessage(ChatColor.RED + "WHEEEEEEE. I HOPE THIS ISN'T UNDERGROUND!");
+            try {
+                player.teleport(new Location(player.getWorld(), Double.valueOf(args[0]), Double.valueOf(args[1]), Double.valueOf(args[2]), 0, 0));
+                player.sendMessage(ChatColor.RED + "WHEEEEEEE. I HOPE THIS ISN'T UNDERGROUND!");
+            } catch (final Exception e) {
+                player.sendMessage(ChatColor.RED + "Maybe you'll write out numbers next time");
+            }
         }
     }
 
