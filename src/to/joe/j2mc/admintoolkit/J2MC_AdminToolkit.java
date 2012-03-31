@@ -6,8 +6,6 @@ import to.joe.j2mc.admintoolkit.command.*;
 
 public class J2MC_AdminToolkit extends JavaPlugin {
 
-    public static String adminPerm = "j2mc.admintoolkit.admin";
-
     @Override
     public void onDisable() {
         this.getLogger().info("Admin Toolkit module disabled");

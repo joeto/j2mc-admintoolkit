@@ -18,20 +18,18 @@ public class WhereIsPlayerCommand extends MasterCommand {
 
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
-        if (sender.hasPermission(J2MC_AdminToolkit.adminPerm)) {
-            if (args.length != 1) {
-                sender.sendMessage(ChatColor.RED + "/whereis player");
-                return;
-            }
-            Player target = null;
-            try {
-                target = J2MC_Manager.getVisibility().getPlayer(args[0], null);
-            } catch (final BadPlayerMatchException e) {
-                sender.sendMessage(ChatColor.RED + e.getMessage());
-                return;
-            }
-            final Location loc = target.getLocation();
-            sender.sendMessage(ChatColor.RED + target.getName() + ": " + loc.getX() + " " + loc.getY() + " " + loc.getZ());
+        if (args.length != 1) {
+            sender.sendMessage(ChatColor.RED + "/whereis player");
+            return;
         }
+        Player target = null;
+        try {
+            target = J2MC_Manager.getVisibility().getPlayer(args[0], null);
+        } catch (final BadPlayerMatchException e) {
+            sender.sendMessage(ChatColor.RED + e.getMessage());
+            return;
+        }
+        final Location loc = target.getLocation();
+        sender.sendMessage(ChatColor.RED + target.getName() + ": " + loc.getX() + " " + loc.getY() + " " + loc.getZ());
     }
 }

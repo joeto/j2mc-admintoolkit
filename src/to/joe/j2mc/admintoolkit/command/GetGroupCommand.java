@@ -21,32 +21,30 @@ public class GetGroupCommand extends MasterCommand {
 
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
-        if (sender.hasPermission(J2MC_AdminToolkit.adminPerm)) {
-            if (args.length != 1) {
-                sender.sendMessage(ChatColor.RED + "/getgroup playername");
-                return;
-            }
-            ResultSet rs = null;
-            try {
-                final PreparedStatement ps = J2MC_Manager.getMySQL().getFreshPreparedStatementHotFromTheOven("SELECT `group` from users WHERE name=?");
-                ps.setString(1, args[0]);
-                rs = ps.executeQuery();
-            } catch (final SQLException e) {
-                return;
-            } catch (final ClassNotFoundException e) {
-                return;
-            }
-            String message = null;
-            try {
-                if (rs.next()) {
-                    message = "Player " + args[0] + ": " + rs.getString(1);
-                }
-            } catch (final SQLException e) {
-                this.plugin.getLogger().warning("Unable to load user/group from MySQL. Oh hell!");
-                this.plugin.getLogger().log(Level.SEVERE, "SQL Exception:", e);
-            }
-            sender.sendMessage(ChatColor.RED + message);
+        if (args.length != 1) {
+            sender.sendMessage(ChatColor.RED + "/getgroup playername");
+            return;
         }
+        ResultSet rs = null;
+        try {
+            final PreparedStatement ps = J2MC_Manager.getMySQL().getFreshPreparedStatementHotFromTheOven("SELECT `group` from users WHERE name=?");
+            ps.setString(1, args[0]);
+            rs = ps.executeQuery();
+        } catch (final SQLException e) {
+            return;
+        } catch (final ClassNotFoundException e) {
+            return;
+        }
+        String message = null;
+        try {
+            if (rs.next()) {
+                message = "Player " + args[0] + ": " + rs.getString(1);
+            }
+        } catch (final SQLException e) {
+            this.plugin.getLogger().warning("Unable to load user/group from MySQL. Oh hell!");
+            this.plugin.getLogger().log(Level.SEVERE, "SQL Exception:", e);
+        }
+        sender.sendMessage(ChatColor.RED + message);
     }
 
 }

@@ -19,21 +19,19 @@ public class GetFlagsCommand extends MasterCommand {
 
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
-        if (sender.hasPermission(J2MC_AdminToolkit.adminPerm)) {
-            if (args.length != 1) {
-                sender.sendMessage(ChatColor.RED + "/getgroup playername");
-                return;
+        if (args.length != 1) {
+            sender.sendMessage(ChatColor.RED + "/getgroup playername");
+            return;
+        }
+        try {
+            final PreparedStatement ps = J2MC_Manager.getMySQL().getFreshPreparedStatementHotFromTheOven("SELECT `flags` FROM users WHERE name=?");
+            ps.setString(1, args[0]);
+            final ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                sender.sendMessage(ChatColor.RED + "User's flags: " + rs.getString("flags"));
             }
-            try {
-                final PreparedStatement ps = J2MC_Manager.getMySQL().getFreshPreparedStatementHotFromTheOven("SELECT `flags` FROM users WHERE name=?");
-                ps.setString(1, args[0]);
-                final ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
-                    sender.sendMessage(ChatColor.RED + "User's flags: " + rs.getString("flags"));
-                }
-            } catch (final Exception e) {
-                e.printStackTrace();
-            }
+        } catch (final Exception e) {
+            e.printStackTrace();
         }
     }
 

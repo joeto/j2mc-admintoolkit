@@ -16,7 +16,7 @@ public class StormCommand extends MasterCommand {
 
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
-        if (isPlayer && player.hasPermission(J2MC_AdminToolkit.adminPerm)) {
+        if (isPlayer) {
             if (args.length == 0) {
                 player.sendMessage(ChatColor.RED + "/storm start/stop");
                 return;

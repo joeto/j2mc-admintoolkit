@@ -17,7 +17,7 @@ public class CooCommand extends MasterCommand {
 
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
-        if (isPlayer && sender.hasPermission(J2MC_AdminToolkit.adminPerm)) {
+        if (isPlayer) {
             if (args.length != 3) {
                 sender.sendMessage(ChatColor.RED + "/coo x y z");
                 return;

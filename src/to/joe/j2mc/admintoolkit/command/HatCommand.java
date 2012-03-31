@@ -16,7 +16,7 @@ public class HatCommand extends MasterCommand {
 
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
-        if (isPlayer && player.hasPermission(J2MC_AdminToolkit.adminPerm)) {
+        if (isPlayer) {
             final ItemStack meow = player.getItemInHand();
             if ((meow.getAmount() > 0) && (meow.getTypeId() < 256)) {
                 player.getInventory().setHelmet(new ItemStack(meow.getType(), 1));

@@ -18,18 +18,16 @@ public class AdminGlobalChatCommand extends MasterCommand {
 
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
-        if (sender.hasPermission(J2MC_AdminToolkit.adminPerm)) {
-            if (args.length < 1) {
-                sender.sendMessage(ChatColor.RED + "Usage: /g Message");
-                return;
-            }
-            final String message = J2MC_Core.combineSplit(0, args, " ");
-            final String adminMsg = "<" + sender.getName() + "> " + ChatColor.LIGHT_PURPLE + message;
-            final String publicMsg = "<ADMIN> " + ChatColor.LIGHT_PURPLE + message;
-            J2MC_Manager.getCore().adminAndLog(adminMsg);
-            J2MC_Manager.getCore().messageNonAdmin(publicMsg);
-            this.plugin.getServer().getPluginManager().callEvent(new MessageEvent(MessageEvent.compile("GAMEMSG"), "<ADMIN> " + message));
+        if (args.length < 1) {
+            sender.sendMessage(ChatColor.RED + "Usage: /g Message");
+            return;
         }
+        final String message = J2MC_Core.combineSplit(0, args, " ");
+        final String adminMsg = "<" + sender.getName() + "> " + ChatColor.LIGHT_PURPLE + message;
+        final String publicMsg = "<ADMIN> " + ChatColor.LIGHT_PURPLE + message;
+        J2MC_Manager.getCore().adminAndLog(adminMsg);
+        J2MC_Manager.getCore().messageNonAdmin(publicMsg);
+        this.plugin.getServer().getPluginManager().callEvent(new MessageEvent(MessageEvent.compile("GAMEMSG"), "<ADMIN> " + message));
     }
 
 }

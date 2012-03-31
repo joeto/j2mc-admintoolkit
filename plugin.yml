@@ -5,46 +5,61 @@ website: http://forums.joe.to
 author: J2 Minecraft Plugin Team
 description: Admin toolkit module.
 commands:
+  gm:
+    description: gamemode
+    usage: /gm
+    permission: j2mc.admintoolkit.admin
+    permission-message: Not an admin
   getgroup:
     description: fetches the user's group
-    usage: |
-            /getgroup player
+    usage: /getgroup player
+    permission: j2mc.admintoolkit.admin
+    permission-message: Not an admin
   hat:
     description: adds item in hand to helmet slot
-    usage: |
-            /hat
+    usage: /hat
+    permission: j2mc.admintoolkit.admin
+    permission-message: Not an admin
   whereis:
      description: gets the coordinates of a player
-     usage: |
-             /whereis player
+     usage: /whereis player
+     permission: j2mc.admintoolkit.admin
+     permission-message: Not an admin
   a:
     description: chat privately \o/
-    usage: |
-            /a message
+    usage: /a message
+    permission: j2mc.admintoolkit.admin
+    permission-message: Not an admin
   g:
     description: Big brother wishes to talk to you
-    usage: |
-            /g message
+    usage: /g message
+    permission: j2mc.admintoolkit.admin
+    permission-message: Not an admin
   time:
     description: change time
-    usage: |
-            /time <day/night>
+    usage: /time <day/night>
+    permission: j2mc.admintoolkit.admin
+    permission-message: Not an admin
   mob:
     description: spawns mob
-    usage: |
-            /mob name
+    usage: /mob name
+    permission: j2mc.admintoolkit.admin
+    permission-message: Not an admin
   coo:
     description: teleport to coords
-    usage: |
-            /coo x y z
+    usage: /coo x y z
+    permission: j2mc.admintoolkit.admin
+    permission-message: Not an admin
   getflags:
     description: get a player's flags
-    usage: |
-            /getflags player
+    usage: /getflags player
+    permission: j2mc.admintoolkit.admin
+    permission-message: Not an admin
   storm:
     description: start and stop storms
-    usage: |
-            /storm start/stop
+    usage: /storm start/stop
+    permission: j2mc.admintoolkit.admin
+    permission-message: Not an admin
 permissions:
   j2mc.admintoolkit.admin:
     description: Admin

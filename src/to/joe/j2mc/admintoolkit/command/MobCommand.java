@@ -20,7 +20,7 @@ public class MobCommand extends MasterCommand {
 
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, final Player player, boolean isPlayer) {
-        if (isPlayer && sender.hasPermission(J2MC_AdminToolkit.adminPerm)) {
+        if (isPlayer) {
             if ((args.length == 0)) {
                 sender.sendMessage(ChatColor.RED + "/mob name");
                 return;
