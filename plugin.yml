@@ -60,6 +60,12 @@ commands:
     usage: /storm start/stop
     permission: j2mc.admintoolkit.admin
     permission-message: Not an admin
+  whois:
+    description: get info on a user
+    usage: /whois player
+    aliases: [who]
+    permissions: j2mc.admintoolkit.admin
+    permissions-message: Not an admin
 permissions:
   j2mc.admintoolkit.admin:
     description: Admin
