@@ -63,7 +63,6 @@ commands:
   whois:
     description: get info on a user
     usage: /whois player
-    aliases: [who]
     permissions: j2mc.admintoolkit.admin
     permissions-message: Not an admin
 permissions:
