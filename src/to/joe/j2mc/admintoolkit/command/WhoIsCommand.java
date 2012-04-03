@@ -50,7 +50,7 @@ public class WhoIsCommand extends MasterCommand {
         sender.sendMessage(ChatColor.GOLD + "=====================================");
         sender.sendMessage(ChatColor.GOLD + "Whois for " + target.getDisplayName());
         sender.sendMessage(ChatColor.GOLD + "IP: " + target.getAddress().getAddress().getHostAddress());
-        sender.sendMessage(ChatColor.GOLD + "Location: " + loc.getX() + ", " + loc.getY() + ", " + loc.getX() + " | Light Level: " + loc.getBlock().getLightLevel());
+        sender.sendMessage(ChatColor.GOLD + "Location: " + (int)Math.round(loc.getX()) + ", " + (int)Math.round(loc.getY()) + ", " + (int)Math.round(loc.getX()) + " | Light Level: " + loc.getBlock().getLightLevel());
         sender.sendMessage(ChatColor.GOLD + "Group: " + group + " | Flags: " + flags);
         sender.sendMessage(ChatColor.GOLD + "=====================================");
     }
