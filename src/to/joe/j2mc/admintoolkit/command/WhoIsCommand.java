@@ -21,6 +21,9 @@ public class WhoIsCommand extends MasterCommand {
 
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
+        if (args.length != 1) {
+            sender.sendMessage(ChatColor.RED + "Usage: /whois <player>");
+        }
         Player target = null;
         try {
             target = J2MC_Manager.getVisibility().getPlayer(args[0], sender);
