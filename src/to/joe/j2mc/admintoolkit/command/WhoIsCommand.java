@@ -33,13 +33,10 @@ public class WhoIsCommand extends MasterCommand {
         }
         String flags = "";
         String group = "";
+        for (char flag : J2MC_Manager.getPermissions().getFlags(target.getName())) {
+            flags += flag;
+        }
         try {
-            final PreparedStatement ps = J2MC_Manager.getMySQL().getFreshPreparedStatementHotFromTheOven("SELECT `flags` FROM users WHERE name=?");
-            ps.setString(1, target.getName());
-            final ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                flags = rs.getString("flags");
-            }
             final PreparedStatement prep = J2MC_Manager.getMySQL().getFreshPreparedStatementHotFromTheOven("SELECT `group` from users WHERE name=?");
             prep.setString(1, target.getName());
             final ResultSet rs2 = prep.executeQuery();
