@@ -24,6 +24,7 @@ public class J2MC_AdminToolkit extends JavaPlugin {
         this.getCommand("getflags").setExecutor(new GetFlagsCommand(this));
         this.getCommand("storm").setExecutor(new StormCommand(this));
         this.getCommand("whois").setExecutor(new WhoIsCommand(this));
+        this.getCommand("gm").setExecutor(new GameModeToggleCommand(this));
 
         this.getLogger().info("Admin Toolkit module enabled");
     }
