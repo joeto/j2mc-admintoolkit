@@ -1,5 +1,6 @@
 package to.joe.j2mc.admintoolkit.command;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -19,8 +20,11 @@ public class BitsCommand extends MasterCommand{
     
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
+        J2MC_Manager.getCore().adminAndLog(ChatColor.RED + player.getName() + " disabled GODMODE");
+        player.sendMessage(ChatColor.RED + "You fizzle out");
         J2MC_Manager.getPermissions().delFlag(player, 'k');
         plugin.getServer().getPluginManager().callEvent(new MessageEvent(MessageEvent.compile("RESTORECOLOUR"), player.getName()));
+        player.getInventory().clear(39);
     }
     
 }
