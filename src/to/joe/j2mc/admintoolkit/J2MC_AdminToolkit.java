@@ -1,10 +1,15 @@
 package to.joe.j2mc.admintoolkit;
 
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import to.joe.j2mc.admintoolkit.command.*;
+import to.joe.j2mc.core.J2MC_Manager;
 
-public class J2MC_AdminToolkit extends JavaPlugin {
+public class J2MC_AdminToolkit extends JavaPlugin implements Listener{
 
     @Override
     public void onDisable() {
@@ -25,7 +30,20 @@ public class J2MC_AdminToolkit extends JavaPlugin {
         this.getCommand("storm").setExecutor(new StormCommand(this));
         this.getCommand("whois").setExecutor(new WhoIsCommand(this));
         this.getCommand("gm").setExecutor(new GameModeToggleCommand(this));
+        this.getCommand("kibbles").setExecutor(new KibblesCommand(this));
+        this.getCommand("bits").setExecutor(new BitsCommand(this));
 
         this.getLogger().info("Admin Toolkit module enabled");
     }
+    
+    @EventHandler
+    public void onDamage(EntityDamageEvent event) {
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            if (J2MC_Manager.getPermissions().hasFlag(player.getName(), 'k')) {
+                event.setCancelled(true);
+            }
+        }
+    }
+    
 }
