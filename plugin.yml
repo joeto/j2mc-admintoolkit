@@ -64,7 +64,17 @@ commands:
     description: get info on a user
     usage: /whois player
     permission: j2mc.admintoolkit.admin
-    permissions-message: Not an admin
+    permission-message: Not an admin
+  kibbles:
+    description: wax on
+    usage: /kibbles
+    permission: j2mc.admintoolkit.admin
+    permission-message: Not an admin
+  bits:
+    description: wax off
+    usage: /bits
+    permission: j2mc.admintoolkit.admin
+    permission-message: Not an admin
 permissions:
   j2mc.admintoolkit.admin:
     description: Admin
