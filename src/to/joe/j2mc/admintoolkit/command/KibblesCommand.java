@@ -27,7 +27,9 @@ public class KibblesCommand extends MasterCommand{
         }
         J2MC_Manager.getPermissions().addFlag(player, 'k');
         if (this.plugin.getServer().getPluginManager().isPluginEnabled("Chat")) {
-            player.setDisplayName(ChatColor.RED + player.getName());
+            if ((this.plugin.getServer().getPluginManager().getPlugin("Chat")).getConfig().getBoolean("enableformatinjection")){
+                player.setDisplayName(ChatColor.RED + player.getName());
+            }
         }
     }
     
