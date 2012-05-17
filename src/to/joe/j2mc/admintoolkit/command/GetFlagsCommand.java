@@ -24,11 +24,14 @@ public class GetFlagsCommand extends MasterCommand {
             return;
         }
         try {
-            final PreparedStatement ps = J2MC_Manager.getMySQL().getFreshPreparedStatementHotFromTheOven("SELECT `flags` FROM users WHERE name=?");
+            final PreparedStatement ps = J2MC_Manager.getMySQL().getFreshPreparedStatementHotFromTheOven("SELECT `flags`,`group` FROM users WHERE name=?");
             ps.setString(1, args[0]);
             final ResultSet rs = ps.executeQuery();
+            final PreparedStatement ps2 = J2MC_Manager.getMySQL().getFreshPreparedStatementHotFromTheOven("SELECT `flags` FROM groups WHERE `name`=?");
+            ps2.setString(1, rs.getString("group"));
+            ResultSet rs2 = ps2.executeQuery();
             if (rs.next()) {
-                sender.sendMessage(ChatColor.RED + "User's flags: " + rs.getString("flags"));
+                sender.sendMessage(ChatColor.RED + "User's flags: " + rs.getString("flags") + rs2.getString("flags"));
             }
         } catch (final Exception e) {
             e.printStackTrace();
