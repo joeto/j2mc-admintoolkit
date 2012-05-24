@@ -22,10 +22,10 @@ public class TimeCommand extends MasterCommand {
                 return;
             }
             boolean day;
-            if (args[0].equalsIgnoreCase("day")) {
+            if (args[0].equalsIgnoreCase("day") || args[0].equalsIgnoreCase("d")) {
                 day = true;
             } else {
-                if (args[0].equalsIgnoreCase("night")) {
+                if (args[0].equalsIgnoreCase("night") || args[0].equalsIgnoreCase("n")) {
                     day = false;
                 } else {
                     sender.sendMessage("/time <day/night>");
