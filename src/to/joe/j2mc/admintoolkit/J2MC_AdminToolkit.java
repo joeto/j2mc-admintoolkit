@@ -32,6 +32,7 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener{
         this.getCommand("gm").setExecutor(new GameModeToggleCommand(this));
         this.getCommand("kibbles").setExecutor(new KibblesCommand(this));
         this.getCommand("bits").setExecutor(new BitsCommand(this));
+        this.getCommand("invsee").setExecutor(new InventoryInspectionCommand(this));
 
         this.getLogger().info("Admin Toolkit module enabled");
     }

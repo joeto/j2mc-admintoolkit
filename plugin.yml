@@ -75,6 +75,11 @@ commands:
     usage: /bits
     permission: j2mc.admintoolkit.admin
     permission-message: Not an admin
+  invsee:
+    description: inspect inventories
+    usage: /invsee player
+    permission: j2mc.admintoolkit.admin
+    permission-message: Not an admin   
 permissions:
   j2mc.admintoolkit.admin:
     description: Admin
