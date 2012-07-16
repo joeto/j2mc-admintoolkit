@@ -27,26 +27,26 @@ public class MobCommand extends MasterCommand {
             }
             if (args[0].equals("MissingNo")) {
                 for (int x = 0; x < 20; x++) {
-                    player.sendMessage(ChatColor.MAGIC + "OMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMG");
+                    player.sendMessage(ChatColor.MAGIC + "locloclocloclocloclocloclocloclocloc");
                 }
                 this.plugin.getServer().getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable() {
                     @Override
                     public void run() {
-                        player.kickPlayer(ChatColor.MAGIC + "OMG OMG OMG OMG OMG");
+                        player.kickPlayer(ChatColor.MAGIC + "loc loc loc loc loc");
                     }
                 }, 100);
             }
-            final EntityType mob = EntityType.valueOf(args[0]);
+            final EntityType mob = EntityType.fromName(args[0]);
             if (mob != null) {
                 final Block pos = player.getTargetBlock(null, 50);
-                if (pos != null) {
-                    final Location omg = pos.getLocation();
-                    player.getWorld().spawnCreature(omg, mob);
-                    sender.sendMessage("Spawned one " + mob.getName() + " at " + omg.getBlockX() + " " + omg.getBlockY() + " " + omg.getBlockZ());
-                    this.plugin.getLogger().log(Level.INFO, sender.getName() + " spawned one " + mob.getName() + " at " + omg.getBlockX() + " " + omg.getBlockY() + " " + omg.getBlockZ());
-                } else {
+                if (pos == null) {
                     sender.sendMessage("Unable to spawn mob there.");
+                    return;
                 }
+                final Location loc = pos.getLocation().add(0, 1, 0);
+                player.getWorld().spawnEntity(loc, mob);
+                sender.sendMessage("Spawned one " + mob.getName() + " at " + loc.getBlockX() + " " + loc.getBlockY() + " " + loc.getBlockZ());
+                this.plugin.getLogger().log(Level.INFO, sender.getName() + " spawned one " + mob.getName() + " at " + loc.getBlockX() + " " + loc.getBlockY() + " " + loc.getBlockZ());
             } else {
                 sender.sendMessage("Invalid mob.");
             }
