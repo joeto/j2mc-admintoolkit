@@ -27,11 +27,15 @@ public class GetFlagsCommand extends MasterCommand {
             final PreparedStatement ps = J2MC_Manager.getMySQL().getFreshPreparedStatementHotFromTheOven("SELECT `flags`,`group` FROM users WHERE name=?");
             ps.setString(1, args[0]);
             final ResultSet rs = ps.executeQuery();
-            final PreparedStatement ps2 = J2MC_Manager.getMySQL().getFreshPreparedStatementHotFromTheOven("SELECT `flags` FROM groups WHERE `name`=?");
-            ps2.setString(1, rs.getString("group"));
-            ResultSet rs2 = ps2.executeQuery();
             if (rs.next()) {
-                sender.sendMessage(ChatColor.RED + "User's flags: " + rs.getString("flags") + rs2.getString("flags"));
+                final PreparedStatement ps2 = J2MC_Manager.getMySQL().getFreshPreparedStatementHotFromTheOven("SELECT `flags` FROM groups WHERE `name`=?");
+                ps2.setString(1, rs.getString("group"));
+                ResultSet rs2 = ps2.executeQuery();
+                if (rs.next()) {
+                    sender.sendMessage(ChatColor.RED + "User's flags: " + rs.getString("flags") + rs2.getString("flags"));
+                }
+            } else {
+                sender.sendMessage(ChatColor.RED + "That user has never played here");
             }
         } catch (final Exception e) {
             e.printStackTrace();
