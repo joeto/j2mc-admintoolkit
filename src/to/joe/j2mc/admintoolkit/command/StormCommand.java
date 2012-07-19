@@ -18,7 +18,7 @@ public class StormCommand extends MasterCommand {
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
         if (isPlayer) {
             if (args.length == 0) {
-                player.sendMessage(ChatColor.RED + "/storm start/stop");
+                player.sendMessage(ChatColor.RED + "Usage: /storm <start/stop>");
                 return;
             }
             if (args[0].equalsIgnoreCase("start")) {
@@ -30,7 +30,7 @@ public class StormCommand extends MasterCommand {
                 J2MC_Manager.getCore().adminAndLog(ChatColor.RED + player.getName() + " stops the storm");
                 J2MC_Manager.getCore().messageNonAdmin(ChatColor.RED + "Somebody has prevented a storm!");
             } else {
-                player.sendMessage(ChatColor.RED + "/storm start/stop");
+                player.sendMessage(ChatColor.RED + "Usage: /storm <start/stop>");
             }
         }
     }

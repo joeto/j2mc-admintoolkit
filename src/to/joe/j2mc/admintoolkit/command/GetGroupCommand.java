@@ -22,7 +22,7 @@ public class GetGroupCommand extends MasterCommand {
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
         if (args.length != 1) {
-            sender.sendMessage(ChatColor.RED + "/getgroup playername");
+            sender.sendMessage(ChatColor.RED + "Usage: /getgroup <playername>");
             return;
         }
         ResultSet rs = null;
