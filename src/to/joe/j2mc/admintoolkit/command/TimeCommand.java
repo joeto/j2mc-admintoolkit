@@ -18,7 +18,7 @@ public class TimeCommand extends MasterCommand {
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
         if (isPlayer) {
             if (args.length == 0) {
-                sender.sendMessage(ChatColor.RED + "/time <day/night>");
+                sender.sendMessage(ChatColor.RED + "Usage: /time <day/night>");
                 return;
             }
             boolean day;
@@ -28,7 +28,7 @@ public class TimeCommand extends MasterCommand {
                 if (args[0].equalsIgnoreCase("night") || args[0].equalsIgnoreCase("n")) {
                     day = false;
                 } else {
-                    sender.sendMessage("/time <day/night>");
+                    sender.sendMessage("Usage: /time <day/night>");
                     return;
                 }
             }

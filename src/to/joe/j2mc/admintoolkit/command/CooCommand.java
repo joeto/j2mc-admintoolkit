@@ -19,7 +19,7 @@ public class CooCommand extends MasterCommand {
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
         if (isPlayer) {
             if (args.length != 3) {
-                sender.sendMessage(ChatColor.RED + "/coo x y z");
+                sender.sendMessage(ChatColor.RED + "Usage: /coo x y z");
                 return;
             }
             final Entity vehicle = player.getVehicle();

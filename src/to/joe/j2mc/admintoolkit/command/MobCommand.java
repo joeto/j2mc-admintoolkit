@@ -22,7 +22,7 @@ public class MobCommand extends MasterCommand {
     public void exec(CommandSender sender, String commandName, String[] args, final Player player, boolean isPlayer) {
         if (isPlayer) {
             if ((args.length == 0)) {
-                sender.sendMessage(ChatColor.RED + "/mob name");
+                sender.sendMessage(ChatColor.RED + "Usage: /mob name");
                 return;
             }
             if (args[0].equals("MissingNo")) {
