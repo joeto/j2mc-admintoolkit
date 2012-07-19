@@ -19,7 +19,7 @@ public class WhereIsPlayerCommand extends MasterCommand {
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
         if (args.length != 1) {
-            sender.sendMessage(ChatColor.RED + "/whereis player");
+            sender.sendMessage(ChatColor.RED + "Usage: /whereis <playername>");
             return;
         }
         Player target = null;
