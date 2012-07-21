@@ -44,7 +44,7 @@ public class MobCommand extends MasterCommand {
                     return;
                 }
                 final Location loc = pos.getLocation().add(0, 1, 0);
-                player.getWorld().spawnEntity(loc, mob);
+                player.getWorld().spawnCreature(loc, mob);
                 sender.sendMessage("Spawned one " + mob.getName() + " at " + loc.getBlockX() + " " + loc.getBlockY() + " " + loc.getBlockZ());
                 this.plugin.getLogger().log(Level.INFO, sender.getName() + " spawned one " + mob.getName() + " at " + loc.getBlockX() + " " + loc.getBlockY() + " " + loc.getBlockZ());
             } else {
