@@ -8,19 +8,23 @@ import to.joe.j2mc.admintoolkit.J2MC_AdminToolkit;
 import to.joe.j2mc.core.command.MasterCommand;
 
 public class ThorCommand extends MasterCommand {
+    
+    J2MC_AdminToolkit plugin;
 
     public ThorCommand(J2MC_AdminToolkit toolkit) {
         super(toolkit);
+        this.plugin = toolkit;
     }
 
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
         if (isPlayer) {
-            if(J2MC_AdminToolkit.isAGod(player)) {
-                J2MC_AdminToolkit.removeGodlyPowers(player.toString());
+            String possibleGod = player.getName().toLowerCase();
+            if(this.plugin.iAreGodz.contains(possibleGod)) {
+                this.plugin.iAreGodz.remove(possibleGod);
                 player.sendMessage(ChatColor.GOLD + "You lose your mystical powers");
             } else {
-                J2MC_AdminToolkit.giveGodlyPowers(player.toString());
+                this.plugin.iAreGodz.add(possibleGod);
                 player.sendMessage(ChatColor.GOLD + "You gain mystical powers");
             }
         }

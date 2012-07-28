@@ -16,7 +16,7 @@ import to.joe.j2mc.core.J2MC_Manager;
 
 public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
 
-    private static ArrayList<String> iAreGodz;
+    public ArrayList<String> iAreGodz;
 
     @Override
     public void onDisable() {
@@ -25,7 +25,7 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        J2MC_AdminToolkit.iAreGodz = new ArrayList<String>();
+        iAreGodz = new ArrayList<String>();
         this.getCommand("hat").setExecutor(new HatCommand(this));
         this.getCommand("getgroup").setExecutor(new GetGroupCommand(this));
         this.getCommand("whereis").setExecutor(new WhereIsPlayerCommand(this));
@@ -56,25 +56,13 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
         }
     }
 
-    public static void giveGodlyPowers(String name) {
-        J2MC_AdminToolkit.iAreGodz.add(name.toLowerCase());
-    }
-
-    public static void removeGodlyPowers(String name) {
-        J2MC_AdminToolkit.iAreGodz.remove(name.toLowerCase());
-    }
-
-    public static boolean isAGod(Player player) {
-        return J2MC_AdminToolkit.iAreGodz.contains(player.getName().toLowerCase());
-    }
-
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         ItemStack itemInHand = player.getItemInHand();
         final boolean weather = player.getWorld().isThundering();
 
-        if (itemInHand.getTypeId() == 258 && isAGod(player)) {
+        if (itemInHand.getTypeId() == 258 && iAreGodz.contains(player.getName().toLowerCase())) {
             if (event.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
                 player.getWorld().strikeLightningEffect(event.getClickedBlock().getLocation());
                 player.getWorld().setStorm(weather);
