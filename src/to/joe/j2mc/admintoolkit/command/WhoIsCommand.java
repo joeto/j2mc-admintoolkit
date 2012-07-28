@@ -23,6 +23,7 @@ public class WhoIsCommand extends MasterCommand {
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
         if (args.length != 1) {
             sender.sendMessage(ChatColor.RED + "Usage: /whois <player>");
+            return;
         }
         Player target = null;
         try {
