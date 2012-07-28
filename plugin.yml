@@ -80,6 +80,11 @@ commands:
     usage: /invsee player
     permission: j2mc.admintoolkit.admin
     permission-message: Not an admin   
+  thor:
+    description: Use your godly powers to summon lightning
+    usage: /thor
+    permission: j2mc.admintoolkit.admin
+    permission-message: Not an admin  
 permissions:
   j2mc.admintoolkit.admin:
     description: Admin
