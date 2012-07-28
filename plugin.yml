@@ -79,7 +79,12 @@ commands:
     description: inspect inventories
     usage: /invsee player
     permission: j2mc.admintoolkit.admin
-    permission-message: Not an admin   
+    permission-message: Not an admin
+  thor:
+    description: lightening here there and everywhere
+    usage: /thor
+    permission: j2mc.admintoolkit.admin
+    permission-message: Not an admin
 permissions:
   j2mc.admintoolkit.admin:
     description: Admin
