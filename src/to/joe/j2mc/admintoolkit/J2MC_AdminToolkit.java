@@ -43,6 +43,8 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
         this.getCommand("invsee").setExecutor(new InventoryInspectionCommand(this));
         this.getCommand("thor").setExecutor(new ThorCommand(this));
 
+        this.getServer().getPluginManager().registerEvents(this, this);
+        
         this.getLogger().info("Admin Toolkit module enabled");
     }
 
