@@ -27,8 +27,6 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
     public void onEnable() {
         this.thor = new HashSet<String>();
         this.getCommand("hat").setExecutor(new HatCommand(this));
-        this.getCommand("getgroup").setExecutor(new GetGroupCommand(this));
-        this.getCommand("whereis").setExecutor(new WhereIsPlayerCommand(this));
         this.getCommand("a").setExecutor(new AdminChatCommand(this));
         this.getCommand("g").setExecutor(new AdminGlobalChatCommand(this));
         this.getCommand("time").setExecutor(new TimeCommand(this));
@@ -38,8 +36,7 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
         this.getCommand("storm").setExecutor(new StormCommand(this));
         this.getCommand("whois").setExecutor(new WhoIsCommand(this));
         this.getCommand("gm").setExecutor(new GameModeToggleCommand(this));
-        this.getCommand("kibbles").setExecutor(new KibblesCommand(this));
-        this.getCommand("bits").setExecutor(new BitsCommand(this));
+        this.getCommand("adminmode").setExecutor(new AdminModeCommand(this));
         this.getCommand("invsee").setExecutor(new InventoryInspectionCommand(this));
         this.getCommand("thor").setExecutor(new ThorCommand(this));
 

@@ -9,11 +9,11 @@ import to.joe.j2mc.admintoolkit.J2MC_AdminToolkit;
 import to.joe.j2mc.core.J2MC_Manager;
 import to.joe.j2mc.core.command.MasterCommand;
 
-public class KibblesCommand extends MasterCommand{
+public class AdminModeCommand extends MasterCommand{
     
     J2MC_AdminToolkit plugin;
 
-    public KibblesCommand(J2MC_AdminToolkit plugin) {
+    public AdminModeCommand(J2MC_AdminToolkit plugin) {
         super(plugin);
         this.plugin = plugin;
     }

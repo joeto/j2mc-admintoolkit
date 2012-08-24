@@ -32,10 +32,10 @@ public class WhoIsCommand extends MasterCommand {
             sender.sendMessage(ChatColor.RED + e.getMessage());
             return;
         }
-        String flags = "";
+        StringBuilder flags = new StringBuilder();
         String group = "";
         for (char flag : J2MC_Manager.getPermissions().getFlags(target.getName())) {
-            flags += flag;
+            flags.append(flag);
         }
         try {
             final PreparedStatement prep = J2MC_Manager.getMySQL().getFreshPreparedStatementHotFromTheOven("SELECT `group` from users WHERE name=?");
@@ -50,7 +50,6 @@ public class WhoIsCommand extends MasterCommand {
         Location loc = target.getLocation();
         sender.sendMessage(ChatColor.GOLD + "=====================================");
         sender.sendMessage(ChatColor.GOLD + "Whois for " + target.getDisplayName());
-        sender.sendMessage(ChatColor.GOLD + "IP: " + target.getAddress().getAddress().getHostAddress());
         sender.sendMessage(ChatColor.GOLD + "Location: " + (int)Math.round(loc.getX()) + ", " + (int)Math.round(loc.getY()) + ", " + (int)Math.round(loc.getZ()) + " | Light Level: " + loc.getBlock().getLightLevel());
         sender.sendMessage(ChatColor.GOLD + "Group: " + group + " | Flags: " + flags);
         sender.sendMessage(ChatColor.GOLD + "=====================================");

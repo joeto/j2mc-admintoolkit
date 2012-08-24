@@ -10,21 +10,11 @@ commands:
     usage: /gm
     permission: j2mc.admintoolkit.admin
     permission-message: Not an admin
-  getgroup:
-    description: fetches the user's group
-    usage: /getgroup player
-    permission: j2mc.admintoolkit.admin
-    permission-message: Not an admin
   hat:
     description: adds item in hand to helmet slot
     usage: /hat
     permission: j2mc.admintoolkit.admin
     permission-message: Not an admin
-  whereis:
-     description: gets the coordinates of a player
-     usage: /whereis player
-     permission: j2mc.admintoolkit.admin
-     permission-message: Not an admin
   a:
     description: chat privately \o/
     usage: /a message
@@ -65,14 +55,9 @@ commands:
     usage: /whois player
     permission: j2mc.admintoolkit.admin
     permission-message: Not an admin
-  kibbles:
-    description: wax on
-    usage: /kibbles
-    permission: j2mc.admintoolkit.admin
-    permission-message: Not an admin
-  bits:
-    description: wax off
-    usage: /bits
+  adminmode:
+    description: fap
+    usage: /adminmode on/off
     permission: j2mc.admintoolkit.admin
     permission-message: Not an admin
   invsee:
