@@ -66,6 +66,7 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
 
         if ((itemInHand.getTypeId() == 258) && this.thor.contains(player.getName().toLowerCase())) {
             if (event.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
+                event.setCancelled(true);
                 player.getWorld().strikeLightningEffect(event.getClickedBlock().getLocation());
                 player.getWorld().setStorm(weather);
             }
