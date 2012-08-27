@@ -6,8 +6,10 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Slime;
 
 import to.joe.j2mc.admintoolkit.J2MC_AdminToolkit;
 import to.joe.j2mc.core.command.MasterCommand;
@@ -44,7 +46,16 @@ public class MobCommand extends MasterCommand {
                     return;
                 }
                 final Location loc = pos.getLocation().add(0, 1, 0);
-                player.getWorld().spawnEntity(loc, mob);
+                Entity ent = player.getWorld().spawnEntity(loc, mob);
+                if (ent.getType() == EntityType.SLIME && args.length > 1) {
+                    try {
+                        int i = Integer.parseInt(args[1]);
+                        if (i > 0 && i < 101) {
+                            ((Slime) ent).setSize(i);
+                        }
+                    } catch (Exception e) {
+                    }
+                }
                 sender.sendMessage("Spawned one " + mob.getName() + " at " + loc.getBlockX() + " " + loc.getBlockY() + " " + loc.getBlockZ());
                 this.plugin.getLogger().log(Level.INFO, sender.getName() + " spawned one " + mob.getName() + " at " + loc.getBlockX() + " " + loc.getBlockY() + " " + loc.getBlockZ());
             } else {
