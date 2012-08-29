@@ -50,11 +50,6 @@ commands:
     usage: /whois player
     permission: j2mc.admintoolkit.admin
     permission-message: Not an admin
-  adminmode:
-    description: fap
-    usage: /adminmode on/off
-    permission: j2mc.admintoolkit.admin
-    permission-message: Not an admin
   invsee:
     description: inspect inventories
     usage: /invsee player
