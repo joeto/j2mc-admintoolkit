@@ -40,11 +40,6 @@ commands:
     usage: /coo x y z
     permission: j2mc.admintoolkit.admin
     permission-message: Not an admin
-  getflags:
-    description: get a player's flags
-    usage: /getflags player
-    permission: j2mc.admintoolkit.admin
-    permission-message: Not an admin
   storm:
     description: start and stop storms
     usage: /storm start/stop
