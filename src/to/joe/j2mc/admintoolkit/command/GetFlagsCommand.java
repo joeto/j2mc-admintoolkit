@@ -20,7 +20,7 @@ public class GetFlagsCommand extends MasterCommand {
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
         if (args.length != 1) {
-            sender.sendMessage(ChatColor.RED + "Usage: /getgroup <playername>");
+            sender.sendMessage(ChatColor.RED + "Usage: /getflags <playername>");
             return;
         }
         try {
