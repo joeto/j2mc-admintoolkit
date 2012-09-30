@@ -6,61 +6,94 @@ author: J2 Minecraft Plugin Team
 description: Admin toolkit module.
 commands:
   gm:
-    description: gamemode
+    description: Change gamemode
     usage: /gm
-    permission: j2mc.admintoolkit.admin
+    permission: j2mc.admintoolkit.gamemode
     permission-message: Not an admin
   hat:
-    description: adds item in hand to helmet slot
+    description: Sets item in hand as helmet
     usage: /hat
-    permission: j2mc.admintoolkit.admin
-    permission-message: Not an admin
+    permission: j2mc.admintoolkit.hat
+    permission-message: You aren't stylish enough for a hat
   a:
-    description: chat privately \o/
+    description: Chat privately
     usage: /a message
-    permission: j2mc.admintoolkit.admin
+    permission: j2mc.admintoolkit.adminchat
     permission-message: Not an admin
   g:
     description: Big brother wishes to talk to you
     usage: /g message
-    permission: j2mc.admintoolkit.admin
+    permission: j2mc.admintoolkit.godchat
     permission-message: Not an admin
   time:
-    description: change time
+    description: Set time
     usage: /time <day/night>
-    permission: j2mc.admintoolkit.admin
+    permission: j2mc.admintoolkit.time
     permission-message: Not an admin
   mob:
-    description: spawns mob
+    description: Spawn mobs
     usage: /mob name
-    permission: j2mc.admintoolkit.admin
+    permission: j2mc.admintoolkit.mob
     permission-message: Not an admin
   coo:
-    description: teleport to coords
+    description: Teleport to coords
     usage: /coo x y z
-    permission: j2mc.admintoolkit.admin
+    permission: j2mc.admintoolkit.coo
     permission-message: Not an admin
   storm:
-    description: start and stop storms
+    description: Start and stop storms
     usage: /storm start/stop
-    permission: j2mc.admintoolkit.admin
+    permission: j2mc.admintoolkit.storm
     permission-message: Not an admin
   whois:
-    description: get info on a user
+    description: Get info on a user
     usage: /whois player
-    permission: j2mc.admintoolkit.admin
+    permission: j2mc.admintoolkit.whois
     permission-message: Not an admin
   invsee:
-    description: inspect inventories
+    description: Inspect inventories
     usage: /invsee player
-    permission: j2mc.admintoolkit.admin
+    permission: j2mc.admintoolkit.invsee
     permission-message: Not an admin   
   thor:
     description: Use your godly powers to summon lightning
     usage: /thor
-    permission: j2mc.admintoolkit.admin
+    permission: j2mc.admintoolkit.thor
     permission-message: Not an admin  
 permissions:
+  j2mc.admintoolkit.gamemode:
+    description: Change gamemode
+  j2mc.admintoolkit.hat:
+    description: Set a hat
+  j2mc.admintoolkit.adminchat:
+    description: Admin chat
+  j2mc.admintoolkit.godchat:
+    description: God chat
+  j2mc.admintoolkit.time:
+    description: Set time
+  j2mc.admintoolkit.mob:
+    description: Spawn mobs
+  j2mc.admintoolkit.coo:
+    description: Teleport to coords
+  j2mc.admintoolkit.storm:
+    description: Start and stop storms
+  j2mc.admintoolkit.whois:
+    description: Get info on a user
+  j2mc.admintoolkit.invsee:
+    description: Inspect inventories
+  j2mc.admintoolkit.thor:
+    description: Use your godly powers to summon lightning
   j2mc.admintoolkit.admin:
     description: Admin
-
+    children:
+      j2mc.admintoolkit.gamemode: true
+      j2mc.admintoolkit.hat: true
+      j2mc.admintoolkit.adminchat: true
+      j2mc.admintoolkit.godchat: true
+      j2mc.admintoolkit.time: true
+      j2mc.admintoolkit.mob: true
+      j2mc.admintoolkit.coo: true
+      j2mc.admintoolkit.storm: true
+      j2mc.admintoolkit.whois: true
+      j2mc.admintoolkit.invsee: true
+      j2mc.admintoolkit.thor: true
