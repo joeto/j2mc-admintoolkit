@@ -2,6 +2,7 @@ package to.joe.j2mc.admintoolkit.command;
 
 import java.util.logging.Level;
 
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -14,7 +15,7 @@ import org.bukkit.entity.Slime;
 import to.joe.j2mc.admintoolkit.J2MC_AdminToolkit;
 import to.joe.j2mc.core.command.MasterCommand;
 
-public class MobCommand extends MasterCommand {
+public class MobCommand extends MasterCommand<J2MC_AdminToolkit> {
 
     public MobCommand(J2MC_AdminToolkit AdminToolKit) {
         super(AdminToolKit);
@@ -25,6 +26,10 @@ public class MobCommand extends MasterCommand {
         if (isPlayer) {
             if ((args.length == 0)) {
                 sender.sendMessage(ChatColor.RED + "Usage: /mob name");
+                return;
+            }
+            if (args[0].equalsIgnoreCase("list")) {
+                sender.sendMessage(StringUtils.join(EntityType.values()));
                 return;
             }
             if (args[0].equals("MissingNo")) {

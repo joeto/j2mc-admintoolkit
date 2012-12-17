@@ -7,13 +7,10 @@ import org.bukkit.entity.Player;
 import to.joe.j2mc.admintoolkit.J2MC_AdminToolkit;
 import to.joe.j2mc.core.command.MasterCommand;
 
-public class ThorCommand extends MasterCommand {
-
-    J2MC_AdminToolkit plugin;
+public class ThorCommand extends MasterCommand<J2MC_AdminToolkit> {
 
     public ThorCommand(J2MC_AdminToolkit toolkit) {
         super(toolkit);
-        this.plugin = toolkit;
     }
 
     @Override

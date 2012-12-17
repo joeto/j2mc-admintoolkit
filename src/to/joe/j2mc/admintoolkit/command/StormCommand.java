@@ -8,7 +8,7 @@ import to.joe.j2mc.admintoolkit.J2MC_AdminToolkit;
 import to.joe.j2mc.core.J2MC_Manager;
 import to.joe.j2mc.core.command.MasterCommand;
 
-public class StormCommand extends MasterCommand {
+public class StormCommand extends MasterCommand<J2MC_AdminToolkit> {
 
     public StormCommand(J2MC_AdminToolkit toolkit) {
         super(toolkit);

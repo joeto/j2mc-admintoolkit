@@ -8,7 +8,7 @@ import to.joe.j2mc.admintoolkit.J2MC_AdminToolkit;
 import to.joe.j2mc.core.J2MC_Manager;
 import to.joe.j2mc.core.command.MasterCommand;
 
-public class TimeCommand extends MasterCommand {
+public class TimeCommand extends MasterCommand<J2MC_AdminToolkit> {
 
     public TimeCommand(J2MC_AdminToolkit AdminToolKit) {
         super(AdminToolKit);

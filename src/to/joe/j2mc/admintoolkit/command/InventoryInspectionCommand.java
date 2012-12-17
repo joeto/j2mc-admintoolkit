@@ -9,13 +9,10 @@ import to.joe.j2mc.core.J2MC_Manager;
 import to.joe.j2mc.core.command.MasterCommand;
 import to.joe.j2mc.core.exceptions.BadPlayerMatchException;
 
-public class InventoryInspectionCommand extends MasterCommand {
-
-    J2MC_AdminToolkit plugin;
+public class InventoryInspectionCommand extends MasterCommand<J2MC_AdminToolkit> {
 
     public InventoryInspectionCommand(J2MC_AdminToolkit plugin) {
         super(plugin);
-        this.plugin = plugin;
     }
 
     @Override

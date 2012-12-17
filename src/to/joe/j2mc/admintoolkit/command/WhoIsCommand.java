@@ -13,7 +13,7 @@ import to.joe.j2mc.core.J2MC_Manager;
 import to.joe.j2mc.core.command.MasterCommand;
 import to.joe.j2mc.core.exceptions.BadPlayerMatchException;
 
-public class WhoIsCommand extends MasterCommand {
+public class WhoIsCommand extends MasterCommand<J2MC_AdminToolkit> {
 
     public WhoIsCommand(J2MC_AdminToolkit admintoolkit) {
         super(admintoolkit);

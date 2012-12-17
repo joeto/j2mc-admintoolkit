@@ -9,7 +9,7 @@ import to.joe.j2mc.core.J2MC_Core;
 import to.joe.j2mc.core.J2MC_Manager;
 import to.joe.j2mc.core.command.MasterCommand;
 
-public class AdminChatCommand extends MasterCommand {
+public class AdminChatCommand extends MasterCommand<J2MC_AdminToolkit> {
 
     public AdminChatCommand(J2MC_AdminToolkit AdminToolKit) {
         super(AdminToolKit);

@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import to.joe.j2mc.admintoolkit.J2MC_AdminToolkit;
 import to.joe.j2mc.core.command.MasterCommand;
 
-public class HatCommand extends MasterCommand {
+public class HatCommand extends MasterCommand<J2MC_AdminToolkit> {
 
     public HatCommand(J2MC_AdminToolkit AdminToolKit) {
         super(AdminToolKit);

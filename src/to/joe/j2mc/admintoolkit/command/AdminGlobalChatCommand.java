@@ -10,7 +10,7 @@ import to.joe.j2mc.core.J2MC_Manager;
 import to.joe.j2mc.core.command.MasterCommand;
 import to.joe.j2mc.core.event.MessageEvent;
 
-public class AdminGlobalChatCommand extends MasterCommand {
+public class AdminGlobalChatCommand extends MasterCommand<J2MC_AdminToolkit> {
 
     public AdminGlobalChatCommand(J2MC_AdminToolkit adminToolKit) {
         super(adminToolKit);
