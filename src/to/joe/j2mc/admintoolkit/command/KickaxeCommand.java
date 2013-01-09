@@ -21,25 +21,24 @@ public class KickaxeCommand extends MasterCommand<J2MC_AdminToolkit> {
     @Override
     public void exec(CommandSender sender, String commandName, String[] args, Player player, boolean isPlayer) {
         if (isPlayer) {
-            String username = player.getName().toLowerCase();
-            if (this.plugin.kickAxe.contains(username)) {
-                this.plugin.kickAxe.remove(username);
-                player.sendMessage(ChatColor.GOLD + "Your gold axe seems less cool now.");
-                for (ItemStack i : player.getInventory().getContents()) {
-                    if (i.getItemMeta().getDisplayName().equals(ChatColor.LIGHT_PURPLE + "KickAxe")) {
-                        ItemMeta meta = i.getItemMeta();
-                        meta.setDisplayName(null);
-                        meta.setLore(null);
-                        i.setItemMeta(meta);
-                    }
+            boolean hit = false;
+            for (ItemStack i : player.getInventory().getContents()) {
+                if (i.getItemMeta().getDisplayName().equals(J2MC_AdminToolkit.KICKAXE_NAME)) {
+                    ItemMeta meta = i.getItemMeta();
+                    meta.setDisplayName(null);
+                    meta.setLore(null);
+                    i.setItemMeta(meta);
+                    hit = true;
                 }
+            }
+            if (hit) {
+                player.sendMessage(ChatColor.GOLD + "Your gold axe seems less cool now.");
             } else {
-                this.plugin.kickAxe.add(username);
                 player.sendMessage(ChatColor.GOLD + "You rub your gold axe.");
                 ItemStack kickAxe = new ItemStack(Material.GOLD_AXE, 1);
                 ItemMeta meta = kickAxe.getItemMeta();
-                meta.setDisplayName(ChatColor.LIGHT_PURPLE + "KickAxe");
-                meta.setLore(Arrays.asList(new String[] { "This special axe will kick players", "that are hit with it.", "Use it carefully." }));
+                meta.setDisplayName(J2MC_AdminToolkit.KICKAXE_NAME);
+                meta.setLore(Arrays.asList(J2MC_AdminToolkit.KICKAXE_LORE));
                 kickAxe.setItemMeta(meta);
                 player.setItemInHand(kickAxe);
             }

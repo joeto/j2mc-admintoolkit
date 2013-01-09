@@ -32,7 +32,8 @@ import to.joe.j2mc.core.J2MC_Manager;
 public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
 
     public HashSet<String> thor;
-    public HashSet<String> kickAxe;
+    public static final String KICKAXE_NAME = ChatColor.LIGHT_PURPLE + "KickAxe";
+    public static final String[] KICKAXE_LORE = new String[] { "This special axe will kick players", "that are hit with it.", "Use it carefully." };
 
     @Override
     public void onDisable() {
@@ -42,7 +43,6 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         this.thor = new HashSet<String>();
-        this.kickAxe = new HashSet<String>();
         this.getCommand("hat").setExecutor(new HatCommand(this));
         this.getCommand("a").setExecutor(new AdminChatCommand(this));
         this.getCommand("g").setExecutor(new AdminGlobalChatCommand(this));
@@ -78,7 +78,7 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
             Player player = (Player) event.getDamager();
             ItemStack itemInHand = player.getItemInHand();
 
-            if (itemInHand != null && itemInHand.getTypeId() == Material.GOLD_AXE.getId() && this.kickAxe.contains(player.getName().toLowerCase()) && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.LIGHT_PURPLE + "KickAxe")) {
+            if (itemInHand != null && itemInHand.getType() == Material.GOLD_AXE && player.hasPermission("j2mc.admintoolkit.kickaxe") && itemInHand.getItemMeta().getDisplayName().equals(J2MC_AdminToolkit.KICKAXE_NAME)) {
                 event.setCancelled(true);
                 kicked.kickPlayer("IN DA FACE");
             }
