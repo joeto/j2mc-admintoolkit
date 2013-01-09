@@ -1,22 +1,37 @@
 package to.joe.j2mc.admintoolkit;
 
 import java.util.HashSet;
+
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import to.joe.j2mc.admintoolkit.command.*;
+import to.joe.j2mc.admintoolkit.command.AdminChatCommand;
+import to.joe.j2mc.admintoolkit.command.AdminGlobalChatCommand;
+import to.joe.j2mc.admintoolkit.command.CooCommand;
+import to.joe.j2mc.admintoolkit.command.GameModeToggleCommand;
+import to.joe.j2mc.admintoolkit.command.HatCommand;
+import to.joe.j2mc.admintoolkit.command.InventoryInspectionCommand;
+import to.joe.j2mc.admintoolkit.command.KickaxeCommand;
+import to.joe.j2mc.admintoolkit.command.MobCommand;
+import to.joe.j2mc.admintoolkit.command.StormCommand;
+import to.joe.j2mc.admintoolkit.command.ThorCommand;
+import to.joe.j2mc.admintoolkit.command.TimeCommand;
+import to.joe.j2mc.admintoolkit.command.WhoIsCommand;
 import to.joe.j2mc.core.J2MC_Manager;
 
 public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
 
     public HashSet<String> thor;
+    public HashSet<String> kickAxe;
 
     @Override
     public void onDisable() {
@@ -26,6 +41,7 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         this.thor = new HashSet<String>();
+        this.kickAxe = new HashSet<String>();
         this.getCommand("hat").setExecutor(new HatCommand(this));
         this.getCommand("a").setExecutor(new AdminChatCommand(this));
         this.getCommand("g").setExecutor(new AdminGlobalChatCommand(this));
@@ -37,6 +53,7 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
         this.getCommand("gm").setExecutor(new GameModeToggleCommand(this));
         this.getCommand("invsee").setExecutor(new InventoryInspectionCommand(this));
         this.getCommand("thor").setExecutor(new ThorCommand(this));
+        this.getCommand("kickaxe").setExecutor(new KickaxeCommand(this));
 
         this.getServer().getPluginManager().registerEvents(this, this);
         
@@ -49,6 +66,20 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
             final Player player = (Player) event.getEntity();
             if (J2MC_Manager.getPermissions().hasFlag(player.getName(), 'k')) {
                 event.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onDamageByEntity(EntityDamageByEntityEvent event) {
+        if (event.getEntity() instanceof Player && event.getDamager() instanceof Player) {
+            Player kicked = (Player) event.getEntity();
+            Player player = (Player) event.getDamager();
+            ItemStack itemInHand = player.getItemInHand();
+
+            if (itemInHand.getTypeId() == Material.GOLD_AXE.getId() && this.kickAxe.contains(player.getName().toLowerCase())) {
+                event.setCancelled(true);
+                kicked.kickPlayer("IN DA FACE");
             }
         }
     }
