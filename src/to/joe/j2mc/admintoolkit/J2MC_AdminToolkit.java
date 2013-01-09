@@ -56,7 +56,7 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
         this.getCommand("kickaxe").setExecutor(new KickaxeCommand(this));
 
         this.getServer().getPluginManager().registerEvents(this, this);
-        
+
         this.getLogger().info("Admin Toolkit module enabled");
     }
 
