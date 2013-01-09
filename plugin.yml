@@ -59,6 +59,10 @@ commands:
     description: Use your godly powers to summon lightning
     usage: /thor
     permission: j2mc.admintoolkit.thor
+  kickaxe:
+    description: RIGHT IN DA FACE
+    usage: /kickaxe
+    permission: j2mc.admintoolkit.kickaxe
     permission-message: Not an admin  
 permissions:
   j2mc.admintoolkit.gamemode:
@@ -83,6 +87,8 @@ permissions:
     description: Inspect inventories
   j2mc.admintoolkit.thor:
     description: Use your godly powers to summon lightning
+  j2mc.admintoolkit.kickaxe:
+    description: RIGHT IN DA FACE
   j2mc.admintoolkit.admin:
     description: Admin
     children:
@@ -97,3 +103,4 @@ permissions:
       j2mc.admintoolkit.whois: true
       j2mc.admintoolkit.invsee: true
       j2mc.admintoolkit.thor: true
+      j2mc.admintoolkit.kickaxe: true
