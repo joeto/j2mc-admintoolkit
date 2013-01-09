@@ -2,6 +2,7 @@ package to.joe.j2mc.admintoolkit;
 
 import java.util.HashSet;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -77,7 +78,7 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
             Player player = (Player) event.getDamager();
             ItemStack itemInHand = player.getItemInHand();
 
-            if (itemInHand.getTypeId() == Material.GOLD_AXE.getId() && this.kickAxe.contains(player.getName().toLowerCase())) {
+            if (itemInHand != null && itemInHand.getTypeId() == Material.GOLD_AXE.getId() && this.kickAxe.contains(player.getName().toLowerCase()) && itemInHand.getItemMeta().getDisplayName().equals(ChatColor.LIGHT_PURPLE + "KickAxe")) {
                 event.setCancelled(true);
                 kicked.kickPlayer("IN DA FACE");
             }
