@@ -1,7 +1,5 @@
 package to.joe.j2mc.admintoolkit;
 
-import java.util.HashSet;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -31,7 +29,8 @@ import to.joe.j2mc.core.J2MC_Manager;
 
 public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
 
-    public HashSet<String> thor;
+    public static final String THORAXE_NAME = ChatColor.RED + "Mjölnir";
+    public static final String[] THORAXE_LORE = new String[] { "This special hammer will strike lightning", "wherever it is pointed to. Nifty!", "Use it carefully." };
     public static final String KICKAXE_NAME = ChatColor.LIGHT_PURPLE + "KickAxe";
     public static final String[] KICKAXE_LORE = new String[] { "This special axe will kick players", "that are hit with it.", "Use it carefully." };
 
@@ -42,7 +41,6 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        this.thor = new HashSet<String>();
         this.getCommand("hat").setExecutor(new HatCommand(this));
         this.getCommand("a").setExecutor(new AdminChatCommand(this));
         this.getCommand("g").setExecutor(new AdminGlobalChatCommand(this));
@@ -91,7 +89,7 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
         final ItemStack itemInHand = player.getItemInHand();
         final boolean weather = player.getWorld().isThundering();
 
-        if ((itemInHand.getTypeId() == 258) && this.thor.contains(player.getName().toLowerCase())) {
+        if (itemInHand != null && itemInHand.getType() == Material.IRON_AXE && player.hasPermission("j2mc.admintoolkit.thor") && itemInHand.getItemMeta().getDisplayName().equals(J2MC_AdminToolkit.THORAXE_NAME)) {
             if (event.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
                 event.setCancelled(true);
                 player.getWorld().strikeLightningEffect(event.getClickedBlock().getLocation());
