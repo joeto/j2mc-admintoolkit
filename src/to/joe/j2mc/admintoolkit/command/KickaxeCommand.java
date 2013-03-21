@@ -23,7 +23,7 @@ public class KickaxeCommand extends MasterCommand<J2MC_AdminToolkit> {
         if (isPlayer) {
             boolean hit = false;
             for (ItemStack i : player.getInventory().getContents()) {
-                if (i.getItemMeta().getDisplayName().equals(J2MC_AdminToolkit.KICKAXE_NAME)) {
+                if (i != null && i.hasItemMeta() && i.getItemMeta().hasDisplayName() && i.getItemMeta().getDisplayName().equals(J2MC_AdminToolkit.KICKAXE_NAME)) {
                     ItemMeta meta = i.getItemMeta();
                     meta.setDisplayName(null);
                     meta.setLore(null);

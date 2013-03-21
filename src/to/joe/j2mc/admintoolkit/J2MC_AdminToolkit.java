@@ -11,6 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -70,17 +71,35 @@ public class J2MC_AdminToolkit extends JavaPlugin implements Listener {
             }
         }
     }
-
+    
     @EventHandler
-    public void onDamageByEntity(EntityDamageByEntityEvent event) {
-        if (event.getEntity() instanceof Player && event.getDamager() instanceof Player) {
-            Player kicked = (Player) event.getEntity();
-            Player player = (Player) event.getDamager();
-            ItemStack itemInHand = player.getItemInHand();
-
+    public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
+        if (event.getRightClicked() instanceof Player) {
+            final Player kicked = (Player) event.getRightClicked();
+            final Player player = event.getPlayer();
+            final ItemStack itemInHand = player.getItemInHand();
+            
             if (itemInHand != null && itemInHand.getType() == Material.GOLD_AXE && player.hasPermission("j2mc.admintoolkit.kickaxe") && itemInHand.getItemMeta().getDisplayName().equals(J2MC_AdminToolkit.KICKAXE_NAME)) {
                 event.setCancelled(true);
                 kicked.kickPlayer("IN DA FACE");
+                getServer().broadcastMessage(ChatColor.RED + kicked.getName() + " was given an axe " + ChatColor.ITALIC + "to the face!");
+            }
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    @EventHandler
+    public void onDamageByEntity(EntityDamageByEntityEvent event) {
+        if (event.getEntity() instanceof Player && event.getDamager() instanceof Player) {
+            final Player kicked = (Player) event.getEntity();
+            final Player player = (Player) event.getDamager();
+            final ItemStack itemInHand = player.getItemInHand();
+
+            if (itemInHand != null && itemInHand.getType() == Material.GOLD_AXE && player.hasPermission("j2mc.admintoolkit.kickaxe") && itemInHand.getItemMeta().getDisplayName().equals(J2MC_AdminToolkit.KICKAXE_NAME)) {
+                event.setCancelled(true);
+                player.updateInventory();
+                kicked.kickPlayer("IN DA FACE");
+                getServer().broadcastMessage(ChatColor.RED + kicked.getName() + " was given an axe " + ChatColor.ITALIC + "to the face!");
             }
         }
     }
